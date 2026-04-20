@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "Bounded-Policy-Optimization"
 version = "0.1.0"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = "==3.10"
 
 # Core deps: just what both backends need
 dependencies = [
@@ -21,6 +21,7 @@ dependencies = [
 [project.optional-dependencies]
 sb3 = [
   "stable-baselines3[extra]",
+  "setuptools<70.0.0",
 ]
 isaaclab = [
   "torch==2.5.1",
@@ -76,6 +77,9 @@ all = [
   "latex2sympy2_extended",
   "math_verify",
 ]
+
+[tool.uv]
+build-constraint-dependencies = ["setuptools<70.0.0"]
 
 [tool.uv.extra-build-dependencies]
 flatdict = ["setuptools<70.0.0"]
