@@ -1,0 +1,21 @@
+# @package algo
+_convert_: all
+_target_: stable_baselines3.SAC
+policy: "MlpPolicy"
+
+# Training hyperparameters
+seed: ${training.seed}
+learning_rate: 3e-4
+# Uncomment to schedule learning_rate
+# learning_rate:
+#   _target_: utils.linear_schedule
+#   initial_value: 3.e-4
+buffer_size: 1000000
+learning_starts: 100
+batch_size: 256
+tau: 0.005
+gamma: 0.99
+train_freq: 1
+gradient_steps: 1
+n_steps: 1
+target_update_interval: 1

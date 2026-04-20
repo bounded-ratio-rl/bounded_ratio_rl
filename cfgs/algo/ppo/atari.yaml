@@ -1,0 +1,19 @@
+# @package algo
+_convert_: all
+_target_: stable_baselines3.PPO
+policy: "CnnPolicy"
+policy_kwargs:
+  share_features_extractor: True
+
+# Training hyperparameters
+batch_size: 128
+gae_lambda: 0.95
+gamma: 0.99
+n_epochs: 10
+n_steps: 2048
+ent_coef: 0.0
+learning_rate: 0.00025
+clip_range: 0.1
+max_grad_norm: 0.5
+vf_coef: 0.5
+normalize_advantage: true

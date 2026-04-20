@@ -1,0 +1,40 @@
+program: train.py
+name: random_seed_ppo_halfcheetah_1_env
+method: grid
+metric:
+  goal: maximize
+  name: rollout/ep_rew_mean
+parameters:
+  env:
+    values: [mujoco]
+  algo:
+    values: [ppo/mujoco]
+  env.env_id:
+    values: ["HalfCheetah-V5"]
+  training.seed:
+    values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  algo.n_steps:
+    values: [512]
+  algo.batch_size:
+    values: [64]
+  algo.learning_rate:
+    values: [2.0633e-05]
+  algo.n_epochs:
+    values: [20]
+  algo.clip_range:
+    values: [0.1]
+  algo.vf_coef:
+    values: [0.58096]
+  algo.ent_coef:
+    values: [0.000401762]
+  algo.gamma:
+    values: [0.98]
+  algo.gae_lambda:
+    values: [0.92]
+
+
+command:
+  - ${env}
+  - python
+  - ${program}
+  - ${args_no_hyphens}

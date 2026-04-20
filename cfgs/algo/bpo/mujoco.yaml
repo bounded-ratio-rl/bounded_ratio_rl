@@ -1,0 +1,28 @@
+# @package algo
+_convert_: all
+_target_: sb3.BPO
+policy: BPOPolicy
+policy_kwargs:
+  ortho_init: true
+  activation_fn:
+    _target_: hydra.utils.get_class
+    path: torch.nn.ReLU
+  net_arch:
+    pi: [256, 256] # 256 for others
+    vf: [256, 256]
+  log_std_init: 0.0
+
+learning_rate: 0.0003
+batch_size: 64
+n_steps: 2048
+n_epochs: 10
+gamma: 0.99
+gae_lambda: 0.95
+lambda_: 0.001
+ent_coef: 0.0
+vf_coef: 0.5
+u_coef: 0.5
+clip_ratio: 0.3
+verbose: 1
+max_grad_norm: 1.0
+use_median: True

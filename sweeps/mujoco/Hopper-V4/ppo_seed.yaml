@@ -1,0 +1,45 @@
+program: main.py
+name: random_seed_ppo_Hopper_v4
+method: grid
+metric:
+  goal: maximize
+  name: rollout/ep_rew_mean
+parameters:
+  env:
+    values: [mujoco]
+  algo:
+    values: [ppo/mujoco]
+  env.env_id:
+    values: ["Hopper-v4"]
+  training.seed:
+    values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  env.n_envs:
+    values: [1]
+  algo.n_steps:
+    values: [512]
+  algo.batch_size:
+    values: [32]
+  algo.learning_rate:
+    values: [0.00009808]
+  algo.n_epochs:
+    values: [5]
+  algo.clip_range:
+    values: [0.2]
+  algo.gamma:
+    values: [0.999]
+  algo.gae_lambda:
+    values: [0.99]
+  algo.ent_coef:
+    values: [0.00229519]
+  algo.vf_coef:
+    values: [0.835671]
+  algo.max_grad_norm:
+    values: [0.7]
+  algo.normalize_advantage:
+    values: [True]
+
+command:
+  - ${env}
+  - python
+  - ${program}
+  - ${args_no_hyphens}

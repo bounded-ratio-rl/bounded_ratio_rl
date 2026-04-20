@@ -1,0 +1,22 @@
+program: train.py
+name: random_seed_sac_Swimmer_v4
+method: grid
+metric:
+  goal: maximize
+  name: rollout/ep_rew_mean
+parameters:
+  algo:
+    values: [sac]
+  env.env_id:
+    values: ["Swimmer-v4"]
+  training.seed:
+    values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  algo.learning_starts:
+    values: [10000]
+
+
+command:
+  - ${env}
+  - python
+  - ${program}
+  - ${args_no_hyphens}

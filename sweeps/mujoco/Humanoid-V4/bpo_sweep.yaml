@@ -1,0 +1,37 @@
+program: train.py
+name: sweep_humanoid_bpo_adv
+method: bayes
+metric:
+  goal: maximize
+  name: rollout/ep_rew_mean
+parameters:
+  env:
+    values: [mujoco]
+  algo:
+    values: [bpo/mujoco]
+  env.env_id:
+    values: ["Humanoid-v4"]
+  training.seed:
+    values: [1]
+  env.n_envs:
+    values: [4]
+  algo.n_steps:
+    values: [1024]
+  algo.learning_rate:
+    values: [0.0001]
+  algo.clip_ratio:
+    values: [0.1, 0.2, 0.3]
+  algo.batch_size:
+    values: [128, 256, 512]
+  algo.n_epochs:
+    values: [5, 10, 20]
+  algo.lambda_:
+    values: [0.001, 1.0, 10.0]
+  algo.gamma:
+    values: [0.99]
+
+command:
+  - ${env}
+  - python
+  - ${program}
+  - ${args_no_hyphens}

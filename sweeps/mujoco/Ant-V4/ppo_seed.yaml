@@ -1,0 +1,45 @@
+program: train.py
+name: random_seed_ppo_Ant_v4_default
+method: grid
+metric:
+  goal: maximize
+  name: rollout/ep_rew_mean
+parameters:
+  env:
+    values: [mujoco]
+  algo:
+    values: [ppo/mujoco]
+  env.env_id:
+    values: ["Ant-v4"]
+  training.seed:
+    values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  env.n_envs:
+    values: [1]
+  algo.n_steps:
+    values: [512]
+  algo.batch_size:
+    values: [32]
+  algo.learning_rate:
+    values: [1.90609e-05]
+  algo.n_epochs:
+    values: [10]
+  algo.clip_range:
+    values: [0.1]
+  algo.vf_coef:
+    values: [0.677239]
+  algo.ent_coef:
+    values: [4.9646e-07]
+  algo.gamma:
+    values: [0.98]
+  algo.gae_lambda:
+    values: [0.8]
+  algo.max_grad_norm:
+    values: [0.6]
+  algo.normalize_advantage:
+    values: [True]
+
+command:
+  - ${env}
+  - python
+  - ${program}
+  - ${args_no_hyphens}

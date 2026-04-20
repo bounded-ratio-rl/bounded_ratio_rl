@@ -1,0 +1,16 @@
+defaults:
+  - algo: bpo/atari
+  - env: atari
+  - _self_
+
+wandb:
+  project: BPO
+  entity: aline-c
+  monitor_gym: true
+  save_code: true
+
+training:
+  total_timesteps: 40_000_000
+  gradient_save_freq: 100_000
+  n_envs: 8
+  seed: 42

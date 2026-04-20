@@ -1,0 +1,8 @@
+# @package env
+_target_: sb3.env_factory.create_mujoco_env
+env_id: "Hopper-v5"
+n_envs: 8
+n_steps: 2048
+render_mode: "rgb_array"
+seed: ${training.seed}
+task_name: hopper

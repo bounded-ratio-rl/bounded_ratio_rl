@@ -1,0 +1,39 @@
+program: train.py
+name: random_seed_atari
+method: grid
+metric:
+  goal: maximize
+  name: rollout/ep_rew_mean
+parameters:
+  env:
+    values: [atari]
+  algo:
+    values: [bpo/atari]
+  training.seed:
+    values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  env.env_id:
+    values: ["BreakoutNoFrameskip-v4", "BoxingNoFrameskip-v4", "PongNoFrameskip-v4", "AsterixNoFrameskip-v4"]  # , "BoxingNoFrameskip-v4", "PongNoFrameskip-v4"
+  env.n_envs:
+    values: [8] # 1
+  algo.n_steps:
+    values: [128] # 2048
+  algo.learning_rate:
+    values: [0.00025]
+  algo.batch_size:
+    values: [256]
+  algo.n_epochs:
+    values: [5]
+  algo.clip_ratio:
+    values: [0.3]
+  algo.lambda_:
+    values: [0.001]
+  algo.gamma:
+    values: [0.98]
+  algo.ent_coef:
+    values: [0.001]
+
+command:
+  - ${env}
+  - python
+  - ${program}
+  - ${args_no_hyphens}

@@ -1,0 +1,26 @@
+# @package algo
+_convert_: all
+_target_: stable_baselines3.DQN
+policy: CnnPolicy
+
+# Training hyperparameters
+buffer_size: 100000
+learning_rate: 1.e-4 # add . to make it float
+seed: ${training.seed}
+
+# Uncomment to schedule learning_rate
+# learning_rate:
+#   _target_: utils.linear_schedule
+#   initial_value: 1.e-4
+verbose: 1
+batch_size: 32
+learning_starts: 100000
+target_update_interval: 1000
+train_freq: 4
+gradient_steps: 1
+exploration_fraction: 0.1
+exploration_final_eps: 0.01
+
+# If True, you need to deactivate handle_timeout_termination
+# in the replay_buffer_kwargs
+optimize_memory_usage: False

@@ -1,0 +1,21 @@
+# Configuration for a wandb sweep
+# Running the following command under the hood:
+
+program: scripts/reinforcement_learning/rsl_rl/train.py
+description: "ppo training with random seeds"
+name: PPO_go1_rough_random_seeds
+method: grid
+metric:
+  goal: maximize
+  name: total_reward
+parameters:
+  agent.seed:
+    values: [1, 2, 3, 4, 5]
+
+command:
+  - python
+  - ${program}
+  - "--headless"
+  - "--task=Isaac-Velocity-Rough-Unitree-Go1-v0"
+  - "--logger=wandb"
+  - ${args_no_hyphens}

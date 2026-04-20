@@ -1,0 +1,3 @@
+for jid in $(squeue -u $USER -h -t CG -o %A); do
+    scancel --signal=KILL $jid 2>/dev/null || true
+done

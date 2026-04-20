@@ -1,0 +1,47 @@
+program: train.py
+name: random_seed_ppo_Humanoid
+method: grid
+metric:
+  goal: maximize
+  name: rollout/ep_rew_mean
+parameters:
+  env:
+    values: [mujoco]
+  algo:
+    values: [ppo/mujoco]
+  env.env_id:
+    values: ["Humanoid-v4"]
+  training.seed:
+    values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  training.total_timesteps:
+    values: [20000000]
+  env.n_envs:
+    values: [1]
+  algo.n_steps:
+    values: [512]
+  algo.batch_size:
+    values: [256]
+  algo.learning_rate:
+    values: [3.56987e-05]
+  algo.n_epochs:
+    values: [5]
+  algo.clip_range:
+    values: [0.3]
+  algo.vf_coef:
+    values: [0.431892]
+  algo.ent_coef:
+    values: [0.00238306]
+  algo.gamma:
+    values: [0.98]
+  algo.gae_lambda:
+    values: [0.9]
+  algo.max_grad_norm:
+    values: [2.0]
+  algo.normalize_advantage:
+    values: [True]
+
+command:
+  - ${env}
+  - python
+  - ${program}
+  - ${args_no_hyphens}

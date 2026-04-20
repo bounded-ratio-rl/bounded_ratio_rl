@@ -1,0 +1,7 @@
+# @package env
+_target_: sb3.env_factory.create_mujoco_env
+env_id: "HalfCheetah-v5"
+n_envs: 1
+render_mode: "rgb_array"
+seed: ${training.seed} # Use seed from algo config
+

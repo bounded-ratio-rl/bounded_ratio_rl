@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#SBATCH --gres=gpumem:10g
+#SBATCH --ntasks=1
+#SBATCH --array=0-99
+#SBATCH --mem-per-cpu=4000
+#SBATCH --cpus-per-task=4
+#SBATCH --gpus-per-node=1
+#SBATCH --time=24:00:00
+#SBATCH --output=outputs/wandb_agent_%A_%a.out
+
+export MUJOCO_GL=egl
+
+source .venv/bin/activate
+
+wandb agent aline-c/BPO/20j7k4t5

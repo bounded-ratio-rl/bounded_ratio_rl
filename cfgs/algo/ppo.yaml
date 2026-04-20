@@ -1,0 +1,21 @@
+# @package algo
+defaults:
+  - ppo/atari
+
+# Training hyperparameters
+seed: ${training.seed}
+n_steps: 2048
+batch_size: 64
+gae_lambda: 0.95
+gamma: 0.99
+n_epochs: 10
+ent_coef: 0.0
+learning_rate: 0.0003
+# Uncomment to schedule learning_rate
+# learning_rate:
+#   _target_: utils.linear_schedule
+#   initial_value: 0003
+clip_range: 0.2
+max_grad_norm: 0.5
+vf_coef: 0.5
+normalize_advantage: true

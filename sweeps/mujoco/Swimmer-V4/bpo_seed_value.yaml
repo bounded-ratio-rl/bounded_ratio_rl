@@ -1,0 +1,41 @@
+program: train.py
+name: random_seed_bpo_Swimmer_clip01_u_loss_10
+method: grid
+metric:
+  goal: maximize
+  name: rollout/ep_rew_mean
+parameters:
+  env:
+    values: [mujoco]
+  algo:
+    values: [bpo/mujoco]
+  env.env_id:
+    values: ["Swimmer-v4"]
+  training.seed:
+    values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  env.n_envs:
+    values: [4]
+  algo.n_steps:
+    values: [1024]
+  algo.batch_size:
+    values: [256]
+  algo.learning_rate:
+    values: [0.0003]
+  algo.lambda_:
+    values: [0.01]
+  algo.clip_ratio:
+    values: [0.1]
+  algo.n_epochs:
+    values: [10]
+  algo.gamma:
+    values: [0.9999]
+  algo.gae_lambda:
+    values: [0.98]
+  algo.use_median:
+    values: [False]
+
+command:
+  - ${env}
+  - python
+  - ${program}
+  - ${args_no_hyphens}

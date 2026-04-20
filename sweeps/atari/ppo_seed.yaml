@@ -1,0 +1,47 @@
+program: train.py
+method: grid
+metric:
+  goal: maximize
+  name: rollout/ep_rew_mean
+parameters:
+  env:
+    values: [atari]
+  algo:
+    values: [ppo/atari]
+  env.env_id:
+    values:
+      ["BreakoutNoFrameskip-v4", "BoxingNoFrameskip-v4", "PongNoFrameskip-v4", "AsterixNoFrameskip-v4"]
+  training.seed:
+    values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  env.n_envs:
+    values: [8]
+  algo.n_steps:
+    values: [128]
+  algo.batch_size:
+    values: [256]
+  algo.learning_rate:
+    values: [2.5e-4]
+  algo.n_epochs:
+    values: [4]
+  algo.clip_range:
+    values: [0.1]
+  algo.vf_coef:
+    values: [0.5]
+  algo.ent_coef:
+    values: [0.01]
+  algo.gamma:
+    values: [0.98]
+  algo.gae_lambda:
+    values: [0.95]
+  algo.max_grad_norm:
+    values: [0.5]
+  algo.normalize_advantage:
+    values: [True]
+  # algo.linear_lr_schedule:
+  #   values: [True]
+
+command:
+  - ${env}
+  - python
+  - ${program}
+  - ${args_no_hyphens}

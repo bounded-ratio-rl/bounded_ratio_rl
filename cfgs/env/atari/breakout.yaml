@@ -1,0 +1,7 @@
+# @package env
+_target_: sb3.env_factory.create_atari_env
+env_id: "BreakoutNoFrameskip-v4"
+n_envs: 4
+n_stack: 4
+n_steps: 128
+seed: ${training.seed}
