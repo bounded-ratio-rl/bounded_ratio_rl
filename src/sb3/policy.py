@@ -88,7 +88,8 @@ class BPOPolicy(ActorCriticPolicy):
             raise NotImplementedError(f"Unsupported distribution '{self.action_dist}'.")
 
         self.value_net = nn.Linear(self.mlp_extractor.latent_dim_vf, 1)
-        # q_net
+        
+        # median value network
         action_dim = get_action_dim(self.action_space)
         u_net_list = create_mlp(
             self.mlp_extractor.latent_dim_vf,

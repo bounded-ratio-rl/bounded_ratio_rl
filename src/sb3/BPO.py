@@ -28,12 +28,8 @@ SelfBPO = TypeVar("SelfBPO", bound="BPO")
 class BPO(OnPolicyAlgorithm):
     """
     Bounded Policy Optimization algorithm (BPO) (clip version)
-    (formerly known as Information Theoretic Policy Optimization - BPO)
 
-    Paper: https://arxiv.org/abs/1707.06347
-    Code: This implementation borrows code from OpenAI Spinning Up (https://github.com/openai/spinningup/)
-    https://github.com/ikostrikov/pytorch-a2c-ppo-acktr-gail and
-    Stable Baselines (PPO2 from https://github.com/hill-a/stable-baselines)
+    Paper: https://arxiv.org/abs/2604.18578v1
 
     :param policy: The policy model to use (MlpPolicy, CnnPolicy, ...)
     :param env: The environment to learn from (if registered in Gym, can be str)
@@ -272,9 +268,6 @@ class BPO(OnPolicyAlgorithm):
                 loss = p_coef * policy_loss + self.vf_coef * value_loss + self.u_coef * u_loss + self.ent_coef * entropy_loss
 
                 # Calculate approximate form of reverse KL Divergence for early stopping
-                # see issue #417: https://github.com/DLR-RM/stable-baselines3/issues/417
-                # and discussion in PR #419: https://github.com/DLR-RM/stable-baselines3/pull/419
-                # and Schulman blog: http://joschu.net/blog/kl-approx.html
                 with th.no_grad():
                     log_ratio = log_prob - rollout_data.old_log_prob
                     approx_kl_div = (
@@ -290,42 +283,6 @@ class BPO(OnPolicyAlgorithm):
                     self.policy.parameters(), self.max_grad_norm
                 )
                 self.policy.optimizer.step()
-
-            # recompute value function
-            # with th.no_grad():
-            #     self.rollout_buffer.returns = self.rollout_buffer.returns.reshape(
-            #         self.n_envs, self.n_steps
-            #     ).swapaxes(0, 1)
-            #     self.rollout_buffer.advantages = self.rollout_buffer.advantages.reshape(
-            #         self.n_envs, self.n_steps
-            #     ).swapaxes(0, 1)
-            #     self.rollout_buffer.values = self.rollout_buffer.values.reshape(
-            #         self.n_envs, self.n_steps
-            #     ).swapaxes(0, 1)
-            #     self.rollout_buffer.observations = (
-            #         self.rollout_buffer.observations.reshape(
-            #             (self.n_envs, self.n_steps) + self.rollout_buffer.observations.shape[1:]
-            #         ).swapaxes(0, 1)
-            #     )
-            #     self.rollout_buffer.actions = self.rollout_buffer.actions.reshape(
-            #         self.n_envs, self.n_steps, -1
-            #     ).swapaxes(0, 1)
-            #     self.rollout_buffer.log_probs = self.rollout_buffer.log_probs.reshape(
-            #         self.n_envs, self.n_steps
-            #     ).swapaxes(0, 1)
-
-            #     for i in range(self.rollout_buffer.buffer_size):
-            #         obs = self.rollout_buffer.observations[i, :, :]
-            #         value = self.policy.predict_values(obs_as_tensor(obs, self.device))
-            #         self.rollout_buffer.values[i, :] = value.cpu().numpy()[:, 0]
-
-            #     last_values = self.policy.predict_values(
-            #         obs_as_tensor(self._last_obs, self.device)
-            #     )
-            #     self.rollout_buffer.compute_returns_and_advantage(
-            #         last_values, self._last_episode_starts
-            #     )
-            #    self.rollout_buffer.generator_ready = False
 
             self._n_updates += 1
             if not continue_training:

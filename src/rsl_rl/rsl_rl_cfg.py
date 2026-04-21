@@ -11,7 +11,7 @@ from isaaclab.utils import configclass
 
 @configclass
 class RslRlBPOActorCriticCfg:
-    """Configuration for the PPO actor-critic networks."""
+    """Configuration for the BPO actor-critic networks."""
 
     class_name: str = "BPOActorCritic"
     """The policy class name. Default is ActorCritic."""
