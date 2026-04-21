@@ -61,7 +61,7 @@ all = [
   "poetry-core",
   "accelerate",
   "codetiming",
-  "datasets",
+  "datasets==4.8.4",
   "dill",
   "numpy",
   "pandas",
