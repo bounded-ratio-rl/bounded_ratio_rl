@@ -187,8 +187,8 @@ When `ADVANTAGE="gbpo"`, the script automatically sets `POLICY_LOSS_MODE="gbpo"`
 
 | Parameter | Description | Default |
 |-----------|-------------|---------|
-| `CLIP_RATIO_LOW` | Lower clip bound for target ratio | `0.2` |
-| `CLIP_RATIO_HIGH` | Upper clip bound for target ratio | `0.28` |
+| `CLIP_RATIO_LOW` | Lower clip bound for target ratio | `0.3` |
+| `CLIP_RATIO_HIGH` | Upper clip bound for target ratio | `0.3` |
 | `GBPO_TEMPERATURE` | Controls target ratio sharpness (smaller = more binary) | `0.0001` |
 | `PPO_EPOCHS` | Number of policy update epochs per batch | `5`-`10` |
 
