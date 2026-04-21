@@ -80,6 +80,9 @@ all = [
 
 [tool.uv]
 build-constraint-dependencies = ["setuptools<70.0.0"]
+required-environments = [
+    "sys_platform == 'linux' and platform_machine == 'x86_64'"
+]
 
 [tool.uv.extra-build-dependencies]
 flatdict = ["setuptools<70.0.0"]
