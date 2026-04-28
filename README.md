@@ -55,6 +55,15 @@ source .venv/bin/activate
 bash scripts/install_ttrl_deps.sh
 ```
 
+## Configuration Files
+
+Configuration files are organized in `cfgs/`:
+- `cfgs/config.yaml` - Main configuration with defaults, **modify wandb settings before running experiments.**
+- `cfgs/env/` - Environment configurations
+- `cfgs/algo/` - Algorithm configurations
+
+You can modify these files or override values via command line arguments.
+
 ## Basic Usage for SB3 + mujoco + atari
 
 Run training with default configuration:
@@ -202,14 +211,6 @@ loss = |ratio - target_ratio| * |advantages|
 
 Implementation is in `src/verl/trainer/ppo/core_algos.py`.
 
-## Configuration Files
-
-Configuration files are organized in `cfgs/`:
-- `cfgs/config.yaml` - Main configuration with defaults
-- `cfgs/env/` - Environment configurations
-- `cfgs/algo/` - Algorithm configurations
-
-You can modify these files or override values via command line arguments.
 
 ## Using Weights & Biases Sweeps
 
