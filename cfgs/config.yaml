@@ -5,7 +5,7 @@ defaults:
 
 wandb:
   project: BPO
-  entity: aline-c
+  entity: {your-entity-name}
   monitor_gym: true
   save_code: true
 

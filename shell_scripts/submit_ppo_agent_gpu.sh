@@ -23,7 +23,7 @@ export WANDB_MODE=online
 export WANDB__SERVICE_WAIT=300
 
 #wandb sweep ppo_sweep_pong.yaml
-wandb agent aline-c/dlrl_policy_opt-sweeps/xmx6qxan
+wandb agent {your-entity-name}/dlrl_policy_opt-sweeps/xmx6qxan
 
 
 

@@ -22,9 +22,9 @@ export MUJOCO_GL=egl
 export WANDB_MODE=online
 export WANDB__SERVICE_WAIT=300
 
-#wandb agent aline-c/sb3/<sweep-id>
-#wandb agent aline-c/dlrl_policy_opt-sweeps/wjz0gzv7
+#wandb agent {your-entity-name}/sb3/<sweep-id>
+#wandb agent {your-entity-name}/dlrl_policy_opt-sweeps/wjz0gzv7
 # Atari:
-#wandb agent aline-c/dlrl_policy_opt-sweeps/afxh8mp9
+#wandb agent {your-entity-name}/dlrl_policy_opt-sweeps/afxh8mp9
 # Atari, breakout-v-5
-wandb agent aline-c/dlrl_policy_opt-sweeps/6u3z603c
+wandb agent {your-entity-name}/dlrl_policy_opt-sweeps/6u3z603c

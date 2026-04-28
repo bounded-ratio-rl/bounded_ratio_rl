@@ -23,5 +23,5 @@ echo "Upgrading pip and installing requirements..."
 pip install --upgrade pip
 pip install -r requirements.txt
 
-# wandb agent aline-c/BPO/<SWEEP_ID_HERE>
-wandb agent aline-c/BPO/eexagvim
+# wandb agent {your-entity-name}/BPO/<SWEEP_ID_HERE>
+wandb agent {your-entity-name}/BPO/eexagvim

@@ -42,7 +42,7 @@ def main():
     ap = argparse.ArgumentParser(description="Create a W&B sweep and immediately run an agent.")
     ap.add_argument("sweep_yaml", help="Path to sweep yaml (e.g. sweeps/atari/ppo_seed.yaml)")
     ap.add_argument("-p", "--project", required=True, help="W&B project (e.g. BPO)")
-    ap.add_argument("-e", "--entity", default=None, help="W&B entity (user or team), e.g. aline-c")
+    ap.add_argument("-e", "--entity", default=None, help="W&B entity (user or team), e.g. {your-entity-name}")
     ap.add_argument("--count", type=int, default=None, help="Runs for this agent (optional)")
     args = ap.parse_args()
 

@@ -13,4 +13,4 @@ export MUJOCO_GL=egl
 
 source .venv/bin/activate
 
-wandb agent aline-c/BPO/20j7k4t5
+wandb agent {your-entity-name}/BPO/20j7k4t5
