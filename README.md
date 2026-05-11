@@ -1,6 +1,6 @@
 # Bounded Policy Optimization
 
-This repository implements Bounded Policy Optimization (BPO, https://arxiv.org/abs/2604.18578v1) and other reinforcement learning algorithms using Hydra for configuration management. It also includes [TTRL (Test-Time Reinforcement Learning)](https://arxiv.org/abs/2504.16084) for RL on LLMs without ground-truth labels, built on [verl](https://github.com/volcengine/verl).
+This repository implements Bounded Policy Optimization (BPO, https://arxiv.org/abs/2604.18578) and other reinforcement learning algorithms using Hydra for configuration management. It also includes [TTRL (Test-Time Reinforcement Learning)](https://arxiv.org/abs/2504.16084) for RL on LLMs without ground-truth labels, built on [verl](https://github.com/volcengine/verl).
 
 ## Installation
 
